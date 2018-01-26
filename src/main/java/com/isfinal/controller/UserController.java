@@ -1,5 +1,6 @@
 package com.isfinal.controller;
 
+import com.isfinal.base.BaseController;
 import com.isfinal.moudle.user.model.User;
 import com.isfinal.moudle.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 @Controller
 @RequestMapping("user")
-public class UserController {
+public class UserController extends BaseController{
     @Autowired
     private UserService userService;
 

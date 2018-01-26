@@ -1,5 +1,7 @@
 package com.isfinal.moudle.user.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 public class Image {
@@ -8,9 +10,9 @@ public class Image {
     private String url;
 
     private Integer userId;
-
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createDate;
-
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     private Date modifyDate;
 
     public Integer getId() {
