@@ -36,9 +36,10 @@ public class FileUploadServiceImpl extends BaseServiceImpl implements FileUpload
     public String arrayFile(MultipartFile[] files, String savePath) {
         try {
             for (MultipartFile f : files) {
-                if (!StringUtils.isEmpty(f.getName())) {
-                    ExecuteUpload.upload(f, savePath);
+                if (f.getSize() == 0) {
+                    return "no file";
                 }
+                ExecuteUpload.upload(f, savePath);
             }
         } catch (IOException e) {
             e.printStackTrace();

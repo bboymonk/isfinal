@@ -41,12 +41,9 @@ public class FileUploadController extends BaseController {
     public String moreFileUpload(MultipartFile[] file, HttpServletRequest request) {
         /**
          * 这里有个问题要注意，如果页面是<input name="file" type="file" multiple>
-         * 传过来的数组下标是正常数组。如果没加 multiple，那么下标一直是 1 。
-         *  所以下面这个验证要看页面如何写。
+         *  multiple 可以一次选择多个文件。
+         *      如果不传图片 length 也是 1 。
          */
-        if (file.length <= 1) {
-            return SUCCESS_FAIL_N(false, null, "文件为空");
-        }
         String savePath = request.getSession().getServletContext().getRealPath(File.separator) + File.separator + "upload" + File.separator;
         String s = fileUploadService.arrayFile(file, savePath);
         return SUCCESS_FAIL_N(true, s, null);
