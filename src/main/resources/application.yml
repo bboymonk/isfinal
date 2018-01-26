@@ -1,0 +1,58 @@
+server:
+    port: 80
+spring:
+#==================================================dataSource========================================#
+  datasource:
+      type: com.alibaba.druid.pool.DruidDataSource
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://127.0.0.1:3306/buyback
+      username: root
+      password: wjb
+      max-active: 20
+      initial-size: 1
+      max-wait: 60000
+      min-idle: 1
+      validation-query: select 'x'
+      time-between-eviction-runs-millis: 60000
+      test-while-idle: true
+      min-evictable-idle-time-millis: 300000
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: true
+      max-open-prepared-statements: 20
+      max-pool-prepared-statement-per-connection-size: 20
+ #==================================================freemarker=====================================#
+  freemarker:
+    suffix: .html
+    template-loader-path: classpath:/templates/
+    charset: UTF-8
+    cache: false
+    expose-request-attributes: true
+    request-context-attribute: request
+    content-type: text/html
+#===================================================mvc========================================#
+  http:
+    multipart:
+      enabled: true
+      max-file-size: 20Mb
+      max-request-size: 20Mb
+#===================================================热启动========================================#
+  devtools:
+      restart:
+        exclude: templates/**,static/**
+#==================================================mybatis========================================#
+  mybatis:
+    config-location: classpath:/mybatis-config.xml
+    mapper-locations: classpath:mapper/*.xml
+#==================================================redis========================================#
+  redis:
+      database: 0
+      host: 192.168.0.192
+      port: 6379
+      pool:
+        max-active: 8
+        max-wait: -1
+        max-idle: 8
+        min-idle: 0
+      timeout: 0
+      password: 201314
