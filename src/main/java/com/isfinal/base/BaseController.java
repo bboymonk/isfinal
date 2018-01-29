@@ -11,7 +11,6 @@ import java.util.Map;
 
 
 public class BaseController {
-    public Map<String, Object> baseQueryMap = new HashMap<String, Object>();
     public static final Map<String, Object> hasSessionMap;
 
     static {

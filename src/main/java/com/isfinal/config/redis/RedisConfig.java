@@ -45,8 +45,8 @@ public class RedisConfig extends CachingConfigurerSupport {
     @Bean
     public CacheManager cacheManager(RedisTemplate redisTemplate) {
         RedisCacheManager rcm = new RedisCacheManager(redisTemplate);
-        //设置缓存过期时间
-        //rcm.setDefaultExpiration(60);//秒
+        //设置缓存过期时间   秒
+        rcm.setDefaultExpiration(60);
         return rcm;
     }
 
