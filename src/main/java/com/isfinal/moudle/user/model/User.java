@@ -1,7 +1,5 @@
 package com.isfinal.moudle.user.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 import java.util.Date;
 
 public class User {
@@ -9,24 +7,30 @@ public class User {
 
     private String code;
 
-    private String name;
+    private String nickName;
+
+    private String avatarUrl;
+
+    private Integer gender;
 
     private String phone;
 
-    private String photo;
-
     private String wechat;
 
+    private String unionId;
+
     private String info;
+
+    private String country;
 
     private String province;
 
     private String city;
 
     private String town;
-    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
+
     private Date createDate;
-    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
+
     private Date modifyDate;
 
     public Integer getId() {
@@ -45,12 +49,28 @@ public class User {
         this.code = code == null ? null : code.trim();
     }
 
-    public String getName() {
-        return name;
+    public String getNickName() {
+        return nickName;
     }
 
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
+    public void setNickName(String nickName) {
+        this.nickName = nickName == null ? null : nickName.trim();
+    }
+
+    public String getAvatarUrl() {
+        return avatarUrl;
+    }
+
+    public void setAvatarUrl(String avatarUrl) {
+        this.avatarUrl = avatarUrl == null ? null : avatarUrl.trim();
+    }
+
+    public Integer getGender() {
+        return gender;
+    }
+
+    public void setGender(Integer gender) {
+        this.gender = gender;
     }
 
     public String getPhone() {
@@ -61,14 +81,6 @@ public class User {
         this.phone = phone == null ? null : phone.trim();
     }
 
-    public String getPhoto() {
-        return photo;
-    }
-
-    public void setPhoto(String photo) {
-        this.photo = photo == null ? null : photo.trim();
-    }
-
     public String getWechat() {
         return wechat;
     }
@@ -77,12 +89,28 @@ public class User {
         this.wechat = wechat == null ? null : wechat.trim();
     }
 
+    public String getUnionId() {
+        return unionId;
+    }
+
+    public void setUnionId(String unionId) {
+        this.unionId = unionId == null ? null : unionId.trim();
+    }
+
     public String getInfo() {
         return info;
     }
 
     public void setInfo(String info) {
         this.info = info == null ? null : info.trim();
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country == null ? null : country.trim();
     }
 
     public String getProvince() {

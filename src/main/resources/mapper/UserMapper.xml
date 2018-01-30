@@ -4,11 +4,14 @@
   <resultMap id="BaseResultMap" type="com.isfinal.moudle.user.model.User" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="code" property="code" jdbcType="VARCHAR" />
-    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="nick_name" property="nickName" jdbcType="VARCHAR" />
+    <result column="avatar_url" property="avatarUrl" jdbcType="VARCHAR" />
+    <result column="gender" property="gender" jdbcType="INTEGER" />
     <result column="phone" property="phone" jdbcType="VARCHAR" />
-    <result column="photo" property="photo" jdbcType="VARCHAR" />
     <result column="wechat" property="wechat" jdbcType="VARCHAR" />
+    <result column="union_id" property="unionId" jdbcType="VARCHAR" />
     <result column="info" property="info" jdbcType="VARCHAR" />
+    <result column="country" property="country" jdbcType="VARCHAR" />
     <result column="province" property="province" jdbcType="VARCHAR" />
     <result column="city" property="city" jdbcType="VARCHAR" />
     <result column="town" property="town" jdbcType="VARCHAR" />
@@ -16,7 +19,8 @@
     <result column="modify_date" property="modifyDate" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, code, name, phone, photo, wechat, info, province, city, town, create_date, modify_date
+    id, code, nick_name, avatar_url, gender, phone, wechat, union_id, info, country, 
+    province, city, town, create_date, modify_date
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -29,14 +33,16 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.isfinal.moudle.user.model.User" >
-    insert into user (id, code, name, 
-      phone, photo, wechat, 
-      info, province, city, 
+    insert into user (id, code, nick_name, 
+      avatar_url, gender, phone, 
+      wechat, union_id, info, 
+      country, province, city, 
       town, create_date, modify_date
       )
-    values (#{id,jdbcType=INTEGER}, #{code,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
-      #{phone,jdbcType=VARCHAR}, #{photo,jdbcType=VARCHAR}, #{wechat,jdbcType=VARCHAR}, 
-      #{info,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=INTEGER}, #{code,jdbcType=VARCHAR}, #{nickName,jdbcType=VARCHAR}, 
+      #{avatarUrl,jdbcType=VARCHAR}, #{gender,jdbcType=INTEGER}, #{phone,jdbcType=VARCHAR}, 
+      #{wechat,jdbcType=VARCHAR}, #{unionId,jdbcType=VARCHAR}, #{info,jdbcType=VARCHAR}, 
+      #{country,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, 
       #{town,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, #{modifyDate,jdbcType=TIMESTAMP}
       )
   </insert>
@@ -49,20 +55,29 @@
       <if test="code != null" >
         code,
       </if>
-      <if test="name != null" >
-        name,
+      <if test="nickName != null" >
+        nick_name,
+      </if>
+      <if test="avatarUrl != null" >
+        avatar_url,
+      </if>
+      <if test="gender != null" >
+        gender,
       </if>
       <if test="phone != null" >
         phone,
       </if>
-      <if test="photo != null" >
-        photo,
-      </if>
       <if test="wechat != null" >
         wechat,
       </if>
+      <if test="unionId != null" >
+        union_id,
+      </if>
       <if test="info != null" >
         info,
+      </if>
+      <if test="country != null" >
+        country,
       </if>
       <if test="province != null" >
         province,
@@ -87,20 +102,29 @@
       <if test="code != null" >
         #{code,jdbcType=VARCHAR},
       </if>
-      <if test="name != null" >
-        #{name,jdbcType=VARCHAR},
+      <if test="nickName != null" >
+        #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="avatarUrl != null" >
+        #{avatarUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null" >
+        #{gender,jdbcType=INTEGER},
       </if>
       <if test="phone != null" >
         #{phone,jdbcType=VARCHAR},
       </if>
-      <if test="photo != null" >
-        #{photo,jdbcType=VARCHAR},
-      </if>
       <if test="wechat != null" >
         #{wechat,jdbcType=VARCHAR},
       </if>
+      <if test="unionId != null" >
+        #{unionId,jdbcType=VARCHAR},
+      </if>
       <if test="info != null" >
         #{info,jdbcType=VARCHAR},
+      </if>
+      <if test="country != null" >
+        #{country,jdbcType=VARCHAR},
       </if>
       <if test="province != null" >
         #{province,jdbcType=VARCHAR},
@@ -125,20 +149,29 @@
       <if test="code != null" >
         code = #{code,jdbcType=VARCHAR},
       </if>
-      <if test="name != null" >
-        name = #{name,jdbcType=VARCHAR},
+      <if test="nickName != null" >
+        nick_name = #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="avatarUrl != null" >
+        avatar_url = #{avatarUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null" >
+        gender = #{gender,jdbcType=INTEGER},
       </if>
       <if test="phone != null" >
         phone = #{phone,jdbcType=VARCHAR},
       </if>
-      <if test="photo != null" >
-        photo = #{photo,jdbcType=VARCHAR},
-      </if>
       <if test="wechat != null" >
         wechat = #{wechat,jdbcType=VARCHAR},
       </if>
+      <if test="unionId != null" >
+        union_id = #{unionId,jdbcType=VARCHAR},
+      </if>
       <if test="info != null" >
         info = #{info,jdbcType=VARCHAR},
+      </if>
+      <if test="country != null" >
+        country = #{country,jdbcType=VARCHAR},
       </if>
       <if test="province != null" >
         province = #{province,jdbcType=VARCHAR},
@@ -161,11 +194,14 @@
   <update id="updateByPrimaryKey" parameterType="com.isfinal.moudle.user.model.User" >
     update user
     set code = #{code,jdbcType=VARCHAR},
-      name = #{name,jdbcType=VARCHAR},
+      nick_name = #{nickName,jdbcType=VARCHAR},
+      avatar_url = #{avatarUrl,jdbcType=VARCHAR},
+      gender = #{gender,jdbcType=INTEGER},
       phone = #{phone,jdbcType=VARCHAR},
-      photo = #{photo,jdbcType=VARCHAR},
       wechat = #{wechat,jdbcType=VARCHAR},
+      union_id = #{unionId,jdbcType=VARCHAR},
       info = #{info,jdbcType=VARCHAR},
+      country = #{country,jdbcType=VARCHAR},
       province = #{province,jdbcType=VARCHAR},
       city = #{city,jdbcType=VARCHAR},
       town = #{town,jdbcType=VARCHAR},
