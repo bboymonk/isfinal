@@ -7,11 +7,14 @@ import com.isfinal.moudle.user.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.concurrent.Executors;
+
 /**
  * Created by wjb on 2018/1/26.
  */
 @Service
-public class UserServiceImpl extends BaseServiceImpl<User, Integer> implements UserService {
+public class UserServiceImpl extends BaseServiceImpl<User, Long> implements UserService {
     @Autowired
     private UserMapper userMapper;
 
@@ -21,7 +24,8 @@ public class UserServiceImpl extends BaseServiceImpl<User, Integer> implements U
     }
 
 
-
-
-
+    @Override
+    public User list(Long id) {
+        return userMapper.list(id);
+    }
 }

@@ -1,9 +1,10 @@
 package com.isfinal.moudle.user.model;
 
 import java.util.Date;
+import java.util.List;
 
 public class User {
-    private Integer id;
+    private Long id;
 
     private String code;
 
@@ -33,11 +34,21 @@ public class User {
 
     private Date modifyDate;
 
-    public Integer getId() {
+    private List<Content> contentList;
+
+    public List<Content> getContentList() {
+        return contentList;
+    }
+
+    public void setContentList(List<Content> contentList) {
+        this.contentList = contentList;
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
