@@ -94,10 +94,11 @@ public class UserController extends BaseController {
         }
         try {
             userService.insertSelective(user);
+            return SUCCESS_FAIL_N(true, "success", null);
         } catch (Exception e) {
             e.printStackTrace();
+            return SUCCESS_FAIL_N(false, "success", "添加用户失败");
         }
-        return SUCCESS_FAIL_N(true, "success", null);
     }
 
 }
