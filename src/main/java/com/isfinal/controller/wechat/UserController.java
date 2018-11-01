@@ -38,10 +38,11 @@ public class UserController extends BaseController {
         User list = null;
         try {
             list = userService.list(1L);
+            return SUCCESS_FAIL_N(true, list, null);
         } catch (Exception e) {
             e.printStackTrace();
+            return SUCCESS_FAIL_N(false, list, "查询失败");
         }
-        return SUCCESS_FAIL_N(true, list, null);
     }
 
 
