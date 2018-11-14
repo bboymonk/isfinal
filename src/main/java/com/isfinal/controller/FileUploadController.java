@@ -1,7 +1,7 @@
 package com.isfinal.controller;
 
 import com.isfinal.base.BaseController;
-import com.isfinal.moudle.fileupload.service.FileUploadService;
+import com.isfinal.module.service.FileUploadService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

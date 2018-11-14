@@ -12,7 +12,7 @@ import java.util.Properties;
  * Created by Administrator on 2017/11/16.
  */
 @Configuration
-@MapperScan(basePackages = "com.isfinal.moudle.*.mapper")
+@MapperScan(basePackages = "com.isfinal.*.mapper")
 public class MybatisMapperScannerConfig {
     private static final Logger logger = Logger.getLogger(MybatisMapperScannerConfig.class);
     @Bean
@@ -26,4 +26,5 @@ public class MybatisMapperScannerConfig {
         pageHelper.setProperties(p);
         return pageHelper;
     }
+
 }

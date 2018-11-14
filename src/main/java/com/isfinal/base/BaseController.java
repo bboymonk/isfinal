@@ -80,11 +80,11 @@ public class BaseController {
     public static String SUCCESS_FAIL_N(boolean expr, Object success, Object error) {
         JSONObject json = new JSONObject();
         if (expr) {
-            json.put("MSG", true);
-            json.put("DATA", success);
+            json.put("data", success);
+            json.put("msg", true);
         } else {
-            json.put("MSG", false);
-            json.put("DATA", error);
+            json.put("data", error);
+            json.put("msg", false);
         }
         return json.toJSONString();
     }

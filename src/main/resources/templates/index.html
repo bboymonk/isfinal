@@ -1,29 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>用户列表</title>
+    <link rel="stylesheet" href="/layui/css/layui.css" media="all">
+    <style>
+        body {
+            margin: 10px;
+            overflow: scroll;
+        }
+    </style>
 </head>
-<link rel="stylesheet" href="/js/flyui/css/flyui.css">
-<script src="/js/plugins/jquery-1.8.3.min.js" type="text/javascript"></script>
-<script src="/js/flyui/js/flyui-0.6.2.js" type="text/javascript"></script>
-<script src="/js/index.js" type="text/javascript"></script>
 <body>
 
+<table class="layui-hide" id="demo"></table>
 
-<form data-fly-form id="form_demo" class="fix" method="post" action="">
-    <div data-fly-form-element
-         data-fly-options="{name: 'iblur', title: 'onBlur事件', width:'1/3', required: true, type: 'text',valid: {min:5,max:10}}">
-    </div>
-    <div data-fly-form-element
-         data-fly-options="{name: 'ichangge', title: 'onChange事件',
-     width:'1/2',required: true, type: 'text'}}">
-    </div>
-    <div data-fly-form-element
-         data-fly-options="{name: 'iempty', title: 'onEmpty事件',
-     width:'1/2',required: true, type: 'text'}}">
-    </div>
-</form>
 
+<script src="/layui/layui.all.js"></script>
+<script>
+
+    layui.use(['laydate', 'laypage', 'layer', 'table', 'carousel', 'upload', 'element', 'slider'], function () {
+        var laydate = layui.laydate //日期
+            , laypage = layui.laypage //分页
+            , layer = layui.layer //弹层
+            , table = layui.table //表格
+            , carousel = layui.carousel //轮播
+            , upload = layui.upload //上传
+            , element = layui.element //元素操作
+            , slider = layui.slider //滑块
+
+
+        //执行一个 table 实例
+        table.render({
+            elem: '#demo'
+            , height: 600
+            , url: '/getUsers' //数据接口
+            , title: '用户表'
+            , page: true //开启分页
+//            ,toolbar: 'default' //开启工具栏，此处显示默认图标，可以自定义模板，详见文档
+//            ,totalRow: true //开启合计行
+            , cellMinWidth: 100
+            , response: {
+                statusCode: true //成功的状态码，默认：0
+            }
+            , parseData: function (res) {
+                return {
+                    "data": res.data.list,
+                    "code": res.msg,
+                    "count": res.data.total
+                }
+            }
+            , cols: [[ //表头
+                {field: 'id', title: 'ID', fixed: 'left'}
+                , {field: 'name', title: '用户名'}
+                , {field: 'age', title: '年龄'}
+                , {field: 'work', title: '职业'}
+                , {field: 'phone', title: '手机号'}
+                , {field: 'address', title: '家庭住址'}
+                , {field: 'wechat', title: '微信号'}
+                , {field: 'card', title: '身份证号'}
+                , {field: 'score', title: '芝麻分数'}
+                , {field: 'workUnit', title: '工作单位'}
+                , {field: 'workAddress', title: '工作地址'}
+                , {field: 'unitPhone', title: '单位固话'}
+                , {field: 'socialSecurity', title: '社保'}
+                , {field: 'father', title: '联系人父亲'}
+                , {field: 'fatherPhone', title: '联系人父亲电话'}
+                , {field: 'mother', title: '联系人母亲'}
+                , {field: 'motherPhone', title: '联系人母亲电话'}
+                , {field: 'wife', title: '联系人配偶'}
+                , {field: 'wifePhone', title: '联系人配偶电话'}
+                , {field: 'workmate', title: '联系人同事'}
+                , {field: 'workmatePhone', title: '联系人同事电话'}
+                , {field: 'friend', title: '联系人朋友'}
+                , {field: 'friendPhone', title: '联系人朋友电话'}
+                , {field: 'createTime', title: '创建时间'}
+                , {field: 'updateTime', title: '更新时间'}
+            ]]
+        });
+
+
+    });
+</script>
 </body>
 </html>
