@@ -52,7 +52,7 @@ public class IndexController extends BaseController {
             return SUCCESS_FAIL_N(true,i, "success");
         } catch (Exception e) {
             logger.error("query error", e);
-            return SUCCESS_FAIL_N(false, null, "query error");
+            return SUCCESS_FAIL_N(false, 0, "query error");
         }
     }
 
