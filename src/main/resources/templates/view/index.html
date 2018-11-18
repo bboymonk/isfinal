@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+		<meta name="description" content="你借我贷是专为急需用钱的人打造而来，只需你实名认证就可以成为我们的会员，享受超低   利息借贷服务，你可以利用本款软件极速借款无需任何抵押担保！">
+		<link rel="shortcut icon" href="/images/njwd-favicon.ico" />
+		<link rel="stylesheet" href="/css/public.css" />
+		<link href="/css/swiper.min.css" rel="stylesheet" type="text/css" />
+		<link href="/css/layer.css" rel="stylesheet" type="text/css" />
+		<title>你借我贷是专为急需用钱的人打造而来，只需你实名认证就可以成为我们的会员，享受超低   利息借贷服务，你可以利用本款软件极速借款无需任何抵押担保！</title>
+	</head>
+	<body class="bg_faedda">
+		<div class="bbi_banane"><img src="/images/1.png"/></div>
+		<div class="tuijian_own yellow_grad">
+			<div class="tj_top_title boreb"><i class="tj_top_pic">我们的优势</i></div>
+			<p class="tj_own_tint">本款软件是专为急需用钱的人打造而来，只需你实名认证就可以成为我们的会员，享受超低   利息借贷服务，你可以利用本款软件极速借款无需任何抵押担保！</p>
+			<p class="tj_own_tint">借款客服微信：NJWDWW</p>
+		</div>
+		<div class="you-btn">
+			<a href="javascript:;"><p class="tj_hb yellow_grad">去申请</p></a>
+		</div>
+		<div class="bg-pup">
+			<div class="pupon">
+				<ul>
+					<li>本款产品额度1000元至3000元</li>
+					<li>3分钟下款</li>
+					<li>综合费用25%</li>
+					<li>7天一周期</li>
+				</ul>
+				<div class="reply-btn">
+					<a class="yellow_grad" id="agree">同意</a>
+					<a href="javascript:;" class="grad" id="refuse">拒绝</a>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="/js/view/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript" src="/js/view/layer.js"></script>
+	<script>
+		$(function(){
+		  $('.tj_hb').click(function(){
+			  $('.bg-pup').fadeIn();
+		  });
+
+          $('#refuse').click(function(){
+			  $('.bg-pup').fadeOut();
+		  });
+		  $('#agree').click(function(){
+		      window.location.href = "editor";
+			$('.bg-pup').fadeOut();
+		  })
+        });
+	</script>
+
+</html>

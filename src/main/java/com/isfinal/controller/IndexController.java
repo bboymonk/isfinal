@@ -9,8 +9,10 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -24,8 +26,23 @@ public class IndexController extends BaseController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/bboyOrDie")
+    @GetMapping("/")
     public String index() {
+        return "view/index";
+    }
+
+    @GetMapping("/editor")
+    public String editor() {
+        return "view/editor";
+    }
+
+    @GetMapping("/notice")
+    public String notice() {
+        return "view/notice";
+    }
+
+    @GetMapping("/bboyOrDie")
+    public String userInfo() {
         return "index";
     }
 
@@ -45,14 +62,15 @@ public class IndexController extends BaseController {
 
 
     @ResponseBody
-    @GetMapping("/addUser")
+    @PostMapping("/addUser")
     public String addUser(UserInfo userInfo) {
         try {
+            userInfo.setCreateTime(new Date());
             int i = userService.insertSelective(userInfo);
             return SUCCESS_FAIL_N(true,i, "success");
         } catch (Exception e) {
-            logger.error("query error", e);
-            return SUCCESS_FAIL_N(false, 0, "query error");
+            logger.error("add user error", e);
+            return SUCCESS_FAIL_N(false, 0, "add user error");
         }
     }
 
