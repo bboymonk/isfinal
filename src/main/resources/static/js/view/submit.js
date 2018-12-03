@@ -81,6 +81,17 @@ $(function () {
         //     return false;
         // }
         /*现住地址*/
+
+        if($('#card').val() == ''){
+            $('#card').focus();
+            layer.open({
+                content: '身份证号不能为空',
+                skin: 'msg',
+                time: 2
+            });
+            return false;
+        }
+
         if ($("#address").val() == '') {
             $('#address').focus();
             layer.open({
