@@ -30,12 +30,6 @@ public class Wjb {
         System.out.println(w2);
         System.out.println(a);
         System.out.println(b);
-
-
-
-
-
-
     }
 
 

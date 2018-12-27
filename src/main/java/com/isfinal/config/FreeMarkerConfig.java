@@ -15,8 +15,7 @@ import javax.annotation.PostConstruct;
  */
 @Component
 public class FreeMarkerConfig {
-    @Value("${ctx}")
-    private String ctx;
+    private static final String ctx = "127.0.0.1:8090";
 
     @Autowired
     private FreeMarkerConfigurer freeMarkerConfigurer;
