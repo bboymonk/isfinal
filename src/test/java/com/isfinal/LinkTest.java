@@ -3,10 +3,10 @@ package com.isfinal;
 /**
  * Created by wjb on 2018/11/4.
  */
-public class Demo {
+public class LinkTest {
 
     private Node head;
-    public Demo(){
+    public LinkTest(){
         this.head = new Node(20);
     }
 
@@ -34,14 +34,14 @@ public class Demo {
 
 
     public static void main(String[] args) {
-        Demo demo = new Demo();
-        demo.addData(1);
-        demo.addData(5);
-        demo.addData(6);
-        demo.addData(3);
-        demo.addData(2);
+        LinkTest linkTest = new LinkTest();
+        linkTest.addData(1);
+        linkTest.addData(5);
+        linkTest.addData(6);
+        linkTest.addData(3);
+        linkTest.addData(2);
 
-        demo.traverse(demo.head);
+        linkTest.traverse(linkTest.head);
 
     }
 
