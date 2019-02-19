@@ -229,7 +229,6 @@ function fn_loginin() {
             "mother":$('#mother').val(),
             "motherPhone":$('#motherPhone').val(),
             "workmate":$('#workmate').val(),
-            "workmatePhone":$('#workmatePhone').val(),
             "friend":$('#friend').val(),
             "friendPhone":$('#friendPhone').val(),
             "workUnit":$('#workUnit').val(),
