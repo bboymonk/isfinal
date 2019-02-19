@@ -1,5 +1,6 @@
 <!doctype html>
 <html>
+
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
@@ -9,21 +10,35 @@
 		<link href="/css/layer.css" rel="stylesheet" type="text/css" />
 		<title>欢迎您</title>
 	</head>
-	<body class="bg_faedda">
+
+	<body class="bg_faedda" onload="close();">
 		<div class="tuijian_own yellow_grad">
-			<div class="tj_top_title boreb"><i class="tj_top_pic">正在审核中，请长按二维码加微信，了解审核结果</i></div>
-        </div>
-        <div class="bbi_banane"><img src="/images/wechat.jpg" style="width: 60%;margin-top: 0.8rem;"/></div>
+			<div class="tj_top_title boreb"><i class="tj_top_pic" id="txt">正在自动审核</i>&nbsp;&nbsp;<span id="num" style="font-size: 14px;color: #fff;"></span></div>
+		</div>
+		<div class="bbi_banane"><img src="/images/wechat.jpg" style="width: 60%;margin-top: 0.8rem;" /></div>
 	</body>
 	<script type="text/javascript" src="/js/view/jquery-1.8.3.min.js"></script>
 	<script type="text/javascript" src="/js/view/layer.js"></script>
 	<script>
-        $(function(){
-            layer.open({
-                content: '审核中,请加微信',
-                skin: 'msg',
-                time: 2 /*2秒后自动关闭*/
-            });
-        })
+		$(function() {
+			//          layer.open({
+			//              content: '审核中,请加微信',
+			//              skin: 'msg',
+			//              time: 2 /*2秒后自动关闭*/
+			//          });
+		})
+		var int =setInterval('clock()',1000);
+		var num = 10;
+		function clock(){
+			num >= 0 ? num-- : clearInterval(int);
+			if(num >= 0){
+				document.getElementById('num').innerHTML = num;
+			}else{
+				document.getElementById('num').innerHTML = '';
+				document.getElementById('txt').innerHTML = '恭喜你，审核通过！';
+			}
+			
+		}
 	</script>
+
 </html>

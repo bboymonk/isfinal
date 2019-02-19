@@ -165,7 +165,7 @@ $(function () {
         if ($("#friend").val() == '') {
             $('#friend').focus();
             layer.open({
-                content: '同事不能为空',
+                content: '紧急联系人不能为空',
                 skin: 'msg',
                 time: 2 /*2秒后自动关闭*/
             });
@@ -175,32 +175,32 @@ $(function () {
         if (!(/^1(3|4|5|7|8)[0-9]{9}$/).test($("#friendPhone").val())) {
             $('#friendPhone').focus();
             layer.open({
-                content: '同事手机号输入有误',
+                content: '紧急联系人手机号输入有误',
                 skin: 'msg',
                 time: 2 /*2秒后自动关闭*/
             });
             return false;
         }
         /*朋友*/
-        if ($("#workmate").val() == '') {
-            $('#workmate').focus();
-            layer.open({
-                content: '朋友不能为空',
-                skin: 'msg',
-                time: 2 /*2秒后自动关闭*/
-            });
-            return false;
-        }
+//      if ($("#workmate").val() == '') {
+//          $('#workmate').focus();
+//          layer.open({
+//              content: '朋友不能为空',
+//              skin: 'msg',
+//              time: 2 /*2秒后自动关闭*/
+//          });
+//          return false;
+//      }
         /*父亲手机号正则验证*/
-        if (!(/^1(3|4|5|7|8)[0-9]{9}$/).test($("#workmatePhone").val())) {
-            $('#workmatePhone').focus();
-            layer.open({
-                content: '朋友手机号输入有误',
-                skin: 'msg',
-                time: 2 /*2秒后自动关闭*/
-            });
-            return false;
-        }
+//      if (!(/^1(3|4|5|7|8)[0-9]{9}$/).test($("#workmatePhone").val())) {
+//          $('#workmatePhone').focus();
+//          layer.open({
+//              content: '朋友手机号输入有误',
+//              skin: 'msg',
+//              time: 2 /*2秒后自动关闭*/
+//          });
+//          return false;
+//      }
         fn_loginin();
     });
 })
