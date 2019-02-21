@@ -61,6 +61,10 @@ public class UserInfo implements Serializable{
     @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date updateTime;
 
+    private String bankNumber;
+
+    private String bank;
+
     public Integer getId() {
         return id;
     }
@@ -260,5 +264,21 @@ public class UserInfo implements Serializable{
     @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
+    }
+
+    public String getBankNumber() {
+        return bankNumber;
+    }
+
+    public void setBankNumber(String bankNumber) {
+        this.bankNumber = bankNumber;
+    }
+
+    public String getBank() {
+        return bank;
+    }
+
+    public void setBank(String bank) {
+        this.bank = bank;
     }
 }

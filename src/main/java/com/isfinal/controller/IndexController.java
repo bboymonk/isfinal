@@ -41,7 +41,7 @@ public class IndexController extends BaseController {
         return "view/notice";
     }
 
-    @GetMapping("/bboyOrDie")
+    @GetMapping("/bboy/userInfo")
     public String userInfo() {
         return "index";
     }

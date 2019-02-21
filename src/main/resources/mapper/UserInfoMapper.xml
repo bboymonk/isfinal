@@ -27,11 +27,13 @@
     <result column="FRIEND_PHONE" property="friendPhone" jdbcType="VARCHAR" />
     <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
     <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="BANK_NUMBER" property="bankNumber" jdbcType="VARCHAR" />
+    <result column="BANK" property="bank" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
     ID, NAME, AGE, WORK, PHONE, ADDRESS, WECHAT, CARD, SCORE, WORK_UNIT, WORK_ADDRESS, 
     UNIT_PHONE, SOCIAL_SECURITY, FATHER, FATHER_PHONE, MOTHER, MOTHER_PHONE, WIFE, WIFE_PHONE, 
-    WORKMATE, WORKMATE_PHONE, FRIEND, FRIEND_PHONE, CREATE_TIME, UPDATE_TIME
+    WORKMATE, WORKMATE_PHONE, FRIEND, FRIEND_PHONE, CREATE_TIME, UPDATE_TIME,BANK_NUMBER,BANK
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -52,7 +54,7 @@
       MOTHER, MOTHER_PHONE, WIFE, 
       WIFE_PHONE, WORKMATE, WORKMATE_PHONE, 
       FRIEND, FRIEND_PHONE, CREATE_TIME, 
-      UPDATE_TIME)
+      UPDATE_TIME,BANK_NUMBER,BANK)
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER}, 
       #{work,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
       #{wechat,jdbcType=VARCHAR}, #{card,jdbcType=VARCHAR}, #{score,jdbcType=VARCHAR}, 
@@ -61,7 +63,7 @@
       #{mother,jdbcType=VARCHAR}, #{motherPhone,jdbcType=VARCHAR}, #{wife,jdbcType=VARCHAR}, 
       #{wifePhone,jdbcType=VARCHAR}, #{workmate,jdbcType=VARCHAR}, #{workmatePhone,jdbcType=VARCHAR}, 
       #{friend,jdbcType=VARCHAR}, #{friendPhone,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{updateTime,jdbcType=TIMESTAMP})
+      #{updateTime,jdbcType=TIMESTAMP},#{bankNumber,jdbcType=VARCHAR},#{bank,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.isfinal.module.model.UserInfo" >
     insert into user_info
@@ -141,6 +143,12 @@
       <if test="updateTime != null" >
         UPDATE_TIME,
       </if>
+      <if test="bankNumber != null" >
+        BANK_NUMBER,
+      </if>
+      <if test="bank != null" >
+        BANK,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -217,6 +225,12 @@
       </if>
       <if test="updateTime != null" >
         #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bankNumber != null" >
+        #{bankNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="bank != null" >
+        #{bank,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -295,6 +309,12 @@
       <if test="updateTime != null" >
         UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="bankNumber != null" >
+        BANK_NUMBER = #{bankNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="bank != null" >
+        BANK = #{bank,jdbcType=VARCHAR},
+      </if>
     </set>
     where ID = #{id,jdbcType=INTEGER}
   </update>
@@ -323,7 +343,9 @@
       FRIEND = #{friend,jdbcType=VARCHAR},
       FRIEND_PHONE = #{friendPhone,jdbcType=VARCHAR},
       CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
-      UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP}
+      UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      BANK_NUMBER = #{bankNumber,jdbcType=VARCHAR},
+      BANK = #{bank,jdbcType=VARCHAR}
     where ID = #{id,jdbcType=INTEGER}
   </update>
 

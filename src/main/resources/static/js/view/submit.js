@@ -51,8 +51,8 @@ $(function () {
             return false;
         }
         /*银行卡号验证*/
-        if (!(/^[0-9]*[1-9][0-9]*$/).test($("#bankNum").val())) {
-            $('#bankNum').focus();
+        if (!(/^[0-9]*[1-9][0-9]*$/).test($("#bankNumber").val())) {
+            $('#bankNumber').focus();
             layer.open({
                 content: '银行卡号不能为空',
                 skin: 'msg',
@@ -102,25 +102,25 @@ $(function () {
             return false;
         }
         /*配偶*/
-        if ($("#wife").val() == '') {
-            $('#wife').focus();
-            layer.open({
-                content: '配偶不能为空',
-                skin: 'msg',
-                time: 2 /*2秒后自动关闭*/
-            });
-            return false;
-        }
+        // if ($("#wife").val() == '') {
+        //     $('#wife').focus();
+        //     layer.open({
+        //         content: '配偶不能为空',
+        //         skin: 'msg',
+        //         time: 2 /*2秒后自动关闭*/
+        //     });
+        //     return false;
+        // }
         /*配偶手机号正则验证*/
-        if (!(/^1(3|4|5|7|8)[0-9]{9}$/).test($("#wifePhone").val())) {
-            $('#wifePhone').focus();
-            layer.open({
-                content: '配偶手机号输入有误',
-                skin: 'msg',
-                time: 2 /*2秒后自动关闭*/
-            });
-            return false;
-        }
+        // if (!(/^1(3|4|5|7|8)[0-9]{9}$/).test($("#wifePhone").val())) {
+        //     $('#wifePhone').focus();
+        //     layer.open({
+        //         content: '配偶手机号输入有误',
+        //         skin: 'msg',
+        //         time: 2 /*2秒后自动关闭*/
+        //     });
+        //     return false;
+        // }
         /*父亲*/
         if ($("#father").val() == '') {
             $('#father').focus();
@@ -162,25 +162,25 @@ $(function () {
             return false;
         }
         /*同事*/
-        if ($("#friend").val() == '') {
-            $('#friend').focus();
-            layer.open({
-                content: '紧急联系人不能为空',
-                skin: 'msg',
-                time: 2 /*2秒后自动关闭*/
-            });
-            return false;
-        }
+        // if ($("#friend").val() == '') {
+        //     $('#friend').focus();
+        //     layer.open({
+        //         content: '紧急联系人不能为空',
+        //         skin: 'msg',
+        //         time: 2 /*2秒后自动关闭*/
+        //     });
+        //     return false;
+        // }
         /*同事手机号正则验证*/
-        if (!(/^1(3|4|5|7|8)[0-9]{9}$/).test($("#friendPhone").val())) {
-            $('#friendPhone').focus();
-            layer.open({
-                content: '紧急联系人手机号输入有误',
-                skin: 'msg',
-                time: 2 /*2秒后自动关闭*/
-            });
-            return false;
-        }
+        // if (!(/^1(3|4|5|7|8)[0-9]{9}$/).test($("#friendPhone").val())) {
+        //     $('#friendPhone').focus();
+        //     layer.open({
+        //         content: '紧急联系人手机号输入有误',
+        //         skin: 'msg',
+        //         time: 2 /*2秒后自动关闭*/
+        //     });
+        //     return false;
+        // }
         /*朋友*/
 //      if ($("#workmate").val() == '') {
 //          $('#workmate').focus();
@@ -218,7 +218,7 @@ function fn_loginin() {
             "phone":$('#phone').val(),
             "wechat":$('#wechat').val(),
             "score":$('#score').val(),
-            "bankNum":$('#bankNum').val(), /*银行卡号*/
+            "bankNumber":$('#bankNumber').val(), /*银行卡号*/
             "bank":$('#bank').val(),//所属银行
             "card":$('#card').val(),
             "address":$('#address').val(),
