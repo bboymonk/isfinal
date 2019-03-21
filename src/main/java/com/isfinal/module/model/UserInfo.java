@@ -1,13 +1,8 @@
 package com.isfinal.module.model;
 
-import com.alibaba.fastjson.annotation.JSONField;
-import com.fasterxml.jackson.annotation.JsonFormat;
-import org.springframework.format.annotation.DateTimeFormat;
-
-import java.io.Serializable;
 import java.util.Date;
 
-public class UserInfo implements Serializable{
+public class UserInfo {
     private Integer id;
 
     private String name;
@@ -52,18 +47,15 @@ public class UserInfo implements Serializable{
 
     private String friend;
 
-    private String friendPhone;
-    @JSONField(format="yyyy-MM-dd HH:mm:ss")
-    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
-    private Date createTime;
-
-    @JSONField(format="yyyy-MM-dd HH:mm:ss")
-    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
-    private Date updateTime;
+    private String bank;
 
     private String bankNumber;
 
-    private String bank;
+    private String friendPhone;
+
+    private Date createTime;
+
+    private Date updateTime;
 
     public Integer getId() {
         return id;
@@ -241,29 +233,12 @@ public class UserInfo implements Serializable{
         this.friend = friend == null ? null : friend.trim();
     }
 
-    public String getFriendPhone() {
-        return friendPhone;
+    public String getBank() {
+        return bank;
     }
 
-    public void setFriendPhone(String friendPhone) {
-        this.friendPhone = friendPhone == null ? null : friendPhone.trim();
-    }
-    @JSONField(format="yyyy-MM-dd HH:mm:ss")
-    public Date getCreateTime() {
-        return createTime;
-    }
-    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-    @JSONField(format="yyyy-MM-dd HH:mm:ss")
-    public Date getUpdateTime() {
-        return updateTime;
-    }
-
-    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
+    public void setBank(String bank) {
+        this.bank = bank == null ? null : bank.trim();
     }
 
     public String getBankNumber() {
@@ -271,14 +246,30 @@ public class UserInfo implements Serializable{
     }
 
     public void setBankNumber(String bankNumber) {
-        this.bankNumber = bankNumber;
+        this.bankNumber = bankNumber == null ? null : bankNumber.trim();
     }
 
-    public String getBank() {
-        return bank;
+    public String getFriendPhone() {
+        return friendPhone;
     }
 
-    public void setBank(String bank) {
-        this.bank = bank;
+    public void setFriendPhone(String friendPhone) {
+        this.friendPhone = friendPhone == null ? null : friendPhone.trim();
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
     }
 }
