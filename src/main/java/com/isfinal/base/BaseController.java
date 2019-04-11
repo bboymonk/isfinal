@@ -9,7 +9,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-
+/**
+ * 统一返回数据格式
+ */
 public class BaseController {
     public static final Map<String, Object> hasSessionMap;
 
