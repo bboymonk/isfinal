@@ -1,4 +1,4 @@
-package com.isfinal.config;
+package com.isfinal.config.freemarker;
 
 import freemarker.template.Configuration;
 import org.springframework.beans.factory.annotation.Autowired;

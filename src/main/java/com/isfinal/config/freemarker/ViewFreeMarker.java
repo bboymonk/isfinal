@@ -1,6 +1,5 @@
-package com.isfinal.config;
+package com.isfinal.config.freemarker;
 
-import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerView;
 
 import javax.servlet.http.HttpServletRequest;

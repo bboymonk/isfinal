@@ -1,3 +1,4 @@
+package com.isfinal.fastdfs.pool;
 
 import org.csource.fastdfs.StorageClient1;
 import org.csource.fastdfs.StorageServer;

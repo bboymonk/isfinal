@@ -15,6 +15,7 @@ import java.util.Properties;
 @MapperScan(basePackages = "com.isfinal.*.mapper")
 public class MybatisMapperScannerConfig {
     private static final Logger logger = Logger.getLogger(MybatisMapperScannerConfig.class);
+
     @Bean
     public PageHelper pageHelper(){
         logger.info("------pageHelper");
