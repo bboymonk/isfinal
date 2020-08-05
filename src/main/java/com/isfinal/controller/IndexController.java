@@ -28,7 +28,7 @@ public class IndexController extends BaseController {
 
     @GetMapping("/")
     public String index() {
-        return "view/index";
+        return "view/tree";
     }
 
     @GetMapping("/editor")
