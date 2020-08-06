@@ -1,13 +1,13 @@
 /*
-package com.isfinal.fastdfs;
+package com.isfinal.config.fastdfs;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.InputStream;
 import java.util.HashMap;
 
-import com.isfinal.fastdfs.pool.FastdfsPool;
-import com.isfinal.fastdfs.service.IFileStorage;
+import com.isfinal.config.fastdfs.pool.FastdfsPool;
+import com.isfinal.config.fastdfs.service.IFileStorage;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.csource.common.NameValuePair;

@@ -3,8 +3,10 @@ package com.isfinal.config;
 import com.github.pagehelper.PageHelper;
 import org.apache.log4j.Logger;
 import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.Properties;
 
@@ -26,6 +28,11 @@ public class MybatisMapperScannerConfig {
         p.setProperty("reasonable", "true");
         pageHelper.setProperties(p);
         return pageHelper;
+    }
+
+    @Bean
+    public RestTemplate restTemplate(RestTemplateBuilder builder){
+        return builder.build();
     }
 
 }

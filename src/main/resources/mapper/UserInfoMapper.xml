@@ -1,360 +1,192 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.isfinal.module.mapper.UserInfoMapper" >
-  <resultMap id="BaseResultMap" type="com.isfinal.module.model.UserInfo" >
-    <id column="ID" property="id" jdbcType="INTEGER" />
-    <result column="NAME" property="name" jdbcType="VARCHAR" />
-    <result column="AGE" property="age" jdbcType="INTEGER" />
-    <result column="WORK" property="work" jdbcType="VARCHAR" />
-    <result column="PHONE" property="phone" jdbcType="VARCHAR" />
-    <result column="ADDRESS" property="address" jdbcType="VARCHAR" />
-    <result column="WECHAT" property="wechat" jdbcType="VARCHAR" />
-    <result column="CARD" property="card" jdbcType="VARCHAR" />
-    <result column="SCORE" property="score" jdbcType="VARCHAR" />
-    <result column="WORK_UNIT" property="workUnit" jdbcType="VARCHAR" />
-    <result column="WORK_ADDRESS" property="workAddress" jdbcType="VARCHAR" />
-    <result column="UNIT_PHONE" property="unitPhone" jdbcType="VARCHAR" />
-    <result column="SOCIAL_SECURITY" property="socialSecurity" jdbcType="VARCHAR" />
-    <result column="FATHER" property="father" jdbcType="VARCHAR" />
-    <result column="FATHER_PHONE" property="fatherPhone" jdbcType="VARCHAR" />
-    <result column="MOTHER" property="mother" jdbcType="VARCHAR" />
-    <result column="MOTHER_PHONE" property="motherPhone" jdbcType="VARCHAR" />
-    <result column="WIFE" property="wife" jdbcType="VARCHAR" />
-    <result column="WIFE_PHONE" property="wifePhone" jdbcType="VARCHAR" />
-    <result column="WORKMATE" property="workmate" jdbcType="VARCHAR" />
-    <result column="WORKMATE_PHONE" property="workmatePhone" jdbcType="VARCHAR" />
-    <result column="FRIEND" property="friend" jdbcType="VARCHAR" />
-    <result column="BANK" property="bank" jdbcType="VARCHAR" />
-    <result column="BANK_NUMBER" property="bankNumber" jdbcType="VARCHAR" />
-    <result column="FRIEND_PHONE" property="friendPhone" jdbcType="VARCHAR" />
-    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
-    <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.isfinal.module.mapper.UserInfoMapper">
+  <resultMap id="BaseResultMap" type="com.isfinal.module.model.UserInfo">
+    <id column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="USER_NAME" jdbcType="VARCHAR" property="userName" />
+    <result column="PASS_WORD" jdbcType="VARCHAR" property="passWord" />
+    <result column="PHONE" jdbcType="VARCHAR" property="phone" />
+    <result column="USER_ICON" jdbcType="VARCHAR" property="userIcon" />
+    <result column="GENDER" jdbcType="VARCHAR" property="gender" />
+    <result column="CITY" jdbcType="VARCHAR" property="city" />
+    <result column="PROVINCE" jdbcType="VARCHAR" property="province" />
+    <result column="COUNTRY" jdbcType="VARCHAR" property="country" />
+    <result column="NICE_NAME" jdbcType="VARCHAR" property="niceName" />
+    <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime" />
   </resultMap>
-  <sql id="Base_Column_List" >
-    ID, NAME, AGE, WORK, PHONE, ADDRESS, WECHAT, CARD, SCORE, WORK_UNIT, WORK_ADDRESS, 
-    UNIT_PHONE, SOCIAL_SECURITY, FATHER, FATHER_PHONE, MOTHER, MOTHER_PHONE, WIFE, WIFE_PHONE, 
-    WORKMATE, WORKMATE_PHONE, FRIEND, BANK, BANK_NUMBER, FRIEND_PHONE, CREATE_TIME, UPDATE_TIME
+  <sql id="Base_Column_List">
+    ID, USER_NAME, PASS_WORD, PHONE, USER_ICON, GENDER, CITY, PROVINCE, COUNTRY, NICE_NAME, 
+    CREATE_TIME, UPDATE_TIME
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from user_info
-    where ID = #{id,jdbcType=INTEGER}
+    where ID = #{id,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from user_info
-    where ID = #{id,jdbcType=INTEGER}
+    where ID = #{id,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.isfinal.module.model.UserInfo" >
-    insert into user_info (ID, NAME, AGE, 
-      WORK, PHONE, ADDRESS, 
-      WECHAT, CARD, SCORE, 
-      WORK_UNIT, WORK_ADDRESS, UNIT_PHONE, 
-      SOCIAL_SECURITY, FATHER, FATHER_PHONE, 
-      MOTHER, MOTHER_PHONE, WIFE, 
-      WIFE_PHONE, WORKMATE, WORKMATE_PHONE, 
-      FRIEND, BANK, BANK_NUMBER, 
-      FRIEND_PHONE, CREATE_TIME, UPDATE_TIME
+  <insert id="insert" parameterType="com.isfinal.module.model.UserInfo">
+    insert into user_info (ID, USER_NAME, PASS_WORD, 
+      PHONE, USER_ICON, GENDER, 
+      CITY, PROVINCE, COUNTRY, 
+      NICE_NAME, CREATE_TIME, UPDATE_TIME
       )
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER}, 
-      #{work,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
-      #{wechat,jdbcType=VARCHAR}, #{card,jdbcType=VARCHAR}, #{score,jdbcType=VARCHAR}, 
-      #{workUnit,jdbcType=VARCHAR}, #{workAddress,jdbcType=VARCHAR}, #{unitPhone,jdbcType=VARCHAR}, 
-      #{socialSecurity,jdbcType=VARCHAR}, #{father,jdbcType=VARCHAR}, #{fatherPhone,jdbcType=VARCHAR}, 
-      #{mother,jdbcType=VARCHAR}, #{motherPhone,jdbcType=VARCHAR}, #{wife,jdbcType=VARCHAR}, 
-      #{wifePhone,jdbcType=VARCHAR}, #{workmate,jdbcType=VARCHAR}, #{workmatePhone,jdbcType=VARCHAR}, 
-      #{friend,jdbcType=VARCHAR}, #{bank,jdbcType=VARCHAR}, #{bankNumber,jdbcType=VARCHAR}, 
-      #{friendPhone,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
+    values (#{id,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{passWord,jdbcType=VARCHAR}, 
+      #{phone,jdbcType=VARCHAR}, #{userIcon,jdbcType=VARCHAR}, #{gender,jdbcType=VARCHAR}, 
+      #{city,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR}, #{country,jdbcType=VARCHAR}, 
+      #{niceName,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.isfinal.module.model.UserInfo" >
+  <insert id="insertSelective" parameterType="com.isfinal.module.model.UserInfo">
     insert into user_info
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
         ID,
       </if>
-      <if test="name != null" >
-        NAME,
+      <if test="userName != null">
+        USER_NAME,
       </if>
-      <if test="age != null" >
-        AGE,
+      <if test="passWord != null">
+        PASS_WORD,
       </if>
-      <if test="work != null" >
-        WORK,
-      </if>
-      <if test="phone != null" >
+      <if test="phone != null">
         PHONE,
       </if>
-      <if test="address != null" >
-        ADDRESS,
+      <if test="userIcon != null">
+        USER_ICON,
       </if>
-      <if test="wechat != null" >
-        WECHAT,
+      <if test="gender != null">
+        GENDER,
       </if>
-      <if test="card != null" >
-        CARD,
+      <if test="city != null">
+        CITY,
       </if>
-      <if test="score != null" >
-        SCORE,
+      <if test="province != null">
+        PROVINCE,
       </if>
-      <if test="workUnit != null" >
-        WORK_UNIT,
+      <if test="country != null">
+        COUNTRY,
       </if>
-      <if test="workAddress != null" >
-        WORK_ADDRESS,
+      <if test="niceName != null">
+        NICE_NAME,
       </if>
-      <if test="unitPhone != null" >
-        UNIT_PHONE,
-      </if>
-      <if test="socialSecurity != null" >
-        SOCIAL_SECURITY,
-      </if>
-      <if test="father != null" >
-        FATHER,
-      </if>
-      <if test="fatherPhone != null" >
-        FATHER_PHONE,
-      </if>
-      <if test="mother != null" >
-        MOTHER,
-      </if>
-      <if test="motherPhone != null" >
-        MOTHER_PHONE,
-      </if>
-      <if test="wife != null" >
-        WIFE,
-      </if>
-      <if test="wifePhone != null" >
-        WIFE_PHONE,
-      </if>
-      <if test="workmate != null" >
-        WORKMATE,
-      </if>
-      <if test="workmatePhone != null" >
-        WORKMATE_PHONE,
-      </if>
-      <if test="friend != null" >
-        FRIEND,
-      </if>
-      <if test="bank != null" >
-        BANK,
-      </if>
-      <if test="bankNumber != null" >
-        BANK_NUMBER,
-      </if>
-      <if test="friendPhone != null" >
-        FRIEND_PHONE,
-      </if>
-      <if test="createTime != null" >
+      <if test="createTime != null">
         CREATE_TIME,
       </if>
-      <if test="updateTime != null" >
+      <if test="updateTime != null">
         UPDATE_TIME,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=INTEGER},
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
       </if>
-      <if test="name != null" >
-        #{name,jdbcType=VARCHAR},
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
       </if>
-      <if test="age != null" >
-        #{age,jdbcType=INTEGER},
+      <if test="passWord != null">
+        #{passWord,jdbcType=VARCHAR},
       </if>
-      <if test="work != null" >
-        #{work,jdbcType=VARCHAR},
-      </if>
-      <if test="phone != null" >
+      <if test="phone != null">
         #{phone,jdbcType=VARCHAR},
       </if>
-      <if test="address != null" >
-        #{address,jdbcType=VARCHAR},
+      <if test="userIcon != null">
+        #{userIcon,jdbcType=VARCHAR},
       </if>
-      <if test="wechat != null" >
-        #{wechat,jdbcType=VARCHAR},
+      <if test="gender != null">
+        #{gender,jdbcType=VARCHAR},
       </if>
-      <if test="card != null" >
-        #{card,jdbcType=VARCHAR},
+      <if test="city != null">
+        #{city,jdbcType=VARCHAR},
       </if>
-      <if test="score != null" >
-        #{score,jdbcType=VARCHAR},
+      <if test="province != null">
+        #{province,jdbcType=VARCHAR},
       </if>
-      <if test="workUnit != null" >
-        #{workUnit,jdbcType=VARCHAR},
+      <if test="country != null">
+        #{country,jdbcType=VARCHAR},
       </if>
-      <if test="workAddress != null" >
-        #{workAddress,jdbcType=VARCHAR},
+      <if test="niceName != null">
+        #{niceName,jdbcType=VARCHAR},
       </if>
-      <if test="unitPhone != null" >
-        #{unitPhone,jdbcType=VARCHAR},
-      </if>
-      <if test="socialSecurity != null" >
-        #{socialSecurity,jdbcType=VARCHAR},
-      </if>
-      <if test="father != null" >
-        #{father,jdbcType=VARCHAR},
-      </if>
-      <if test="fatherPhone != null" >
-        #{fatherPhone,jdbcType=VARCHAR},
-      </if>
-      <if test="mother != null" >
-        #{mother,jdbcType=VARCHAR},
-      </if>
-      <if test="motherPhone != null" >
-        #{motherPhone,jdbcType=VARCHAR},
-      </if>
-      <if test="wife != null" >
-        #{wife,jdbcType=VARCHAR},
-      </if>
-      <if test="wifePhone != null" >
-        #{wifePhone,jdbcType=VARCHAR},
-      </if>
-      <if test="workmate != null" >
-        #{workmate,jdbcType=VARCHAR},
-      </if>
-      <if test="workmatePhone != null" >
-        #{workmatePhone,jdbcType=VARCHAR},
-      </if>
-      <if test="friend != null" >
-        #{friend,jdbcType=VARCHAR},
-      </if>
-      <if test="bank != null" >
-        #{bank,jdbcType=VARCHAR},
-      </if>
-      <if test="bankNumber != null" >
-        #{bankNumber,jdbcType=VARCHAR},
-      </if>
-      <if test="friendPhone != null" >
-        #{friendPhone,jdbcType=VARCHAR},
-      </if>
-      <if test="createTime != null" >
+      <if test="createTime != null">
         #{createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="updateTime != null" >
+      <if test="updateTime != null">
         #{updateTime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.isfinal.module.model.UserInfo" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.isfinal.module.model.UserInfo">
     update user_info
-    <set >
-      <if test="name != null" >
-        NAME = #{name,jdbcType=VARCHAR},
+    <set>
+      <if test="userName != null">
+        USER_NAME = #{userName,jdbcType=VARCHAR},
       </if>
-      <if test="age != null" >
-        AGE = #{age,jdbcType=INTEGER},
+      <if test="passWord != null">
+        PASS_WORD = #{passWord,jdbcType=VARCHAR},
       </if>
-      <if test="work != null" >
-        WORK = #{work,jdbcType=VARCHAR},
-      </if>
-      <if test="phone != null" >
+      <if test="phone != null">
         PHONE = #{phone,jdbcType=VARCHAR},
       </if>
-      <if test="address != null" >
-        ADDRESS = #{address,jdbcType=VARCHAR},
+      <if test="userIcon != null">
+        USER_ICON = #{userIcon,jdbcType=VARCHAR},
       </if>
-      <if test="wechat != null" >
-        WECHAT = #{wechat,jdbcType=VARCHAR},
+      <if test="gender != null">
+        GENDER = #{gender,jdbcType=VARCHAR},
       </if>
-      <if test="card != null" >
-        CARD = #{card,jdbcType=VARCHAR},
+      <if test="city != null">
+        CITY = #{city,jdbcType=VARCHAR},
       </if>
-      <if test="score != null" >
-        SCORE = #{score,jdbcType=VARCHAR},
+      <if test="province != null">
+        PROVINCE = #{province,jdbcType=VARCHAR},
       </if>
-      <if test="workUnit != null" >
-        WORK_UNIT = #{workUnit,jdbcType=VARCHAR},
+      <if test="country != null">
+        COUNTRY = #{country,jdbcType=VARCHAR},
       </if>
-      <if test="workAddress != null" >
-        WORK_ADDRESS = #{workAddress,jdbcType=VARCHAR},
+      <if test="niceName != null">
+        NICE_NAME = #{niceName,jdbcType=VARCHAR},
       </if>
-      <if test="unitPhone != null" >
-        UNIT_PHONE = #{unitPhone,jdbcType=VARCHAR},
-      </if>
-      <if test="socialSecurity != null" >
-        SOCIAL_SECURITY = #{socialSecurity,jdbcType=VARCHAR},
-      </if>
-      <if test="father != null" >
-        FATHER = #{father,jdbcType=VARCHAR},
-      </if>
-      <if test="fatherPhone != null" >
-        FATHER_PHONE = #{fatherPhone,jdbcType=VARCHAR},
-      </if>
-      <if test="mother != null" >
-        MOTHER = #{mother,jdbcType=VARCHAR},
-      </if>
-      <if test="motherPhone != null" >
-        MOTHER_PHONE = #{motherPhone,jdbcType=VARCHAR},
-      </if>
-      <if test="wife != null" >
-        WIFE = #{wife,jdbcType=VARCHAR},
-      </if>
-      <if test="wifePhone != null" >
-        WIFE_PHONE = #{wifePhone,jdbcType=VARCHAR},
-      </if>
-      <if test="workmate != null" >
-        WORKMATE = #{workmate,jdbcType=VARCHAR},
-      </if>
-      <if test="workmatePhone != null" >
-        WORKMATE_PHONE = #{workmatePhone,jdbcType=VARCHAR},
-      </if>
-      <if test="friend != null" >
-        FRIEND = #{friend,jdbcType=VARCHAR},
-      </if>
-      <if test="bank != null" >
-        BANK = #{bank,jdbcType=VARCHAR},
-      </if>
-      <if test="bankNumber != null" >
-        BANK_NUMBER = #{bankNumber,jdbcType=VARCHAR},
-      </if>
-      <if test="friendPhone != null" >
-        FRIEND_PHONE = #{friendPhone,jdbcType=VARCHAR},
-      </if>
-      <if test="createTime != null" >
+      <if test="createTime != null">
         CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="updateTime != null" >
+      <if test="updateTime != null">
         UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
       </if>
     </set>
-    where ID = #{id,jdbcType=INTEGER}
+    where ID = #{id,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.isfinal.module.model.UserInfo" >
+  <update id="updateByPrimaryKey" parameterType="com.isfinal.module.model.UserInfo">
     update user_info
-    set NAME = #{name,jdbcType=VARCHAR},
-      AGE = #{age,jdbcType=INTEGER},
-      WORK = #{work,jdbcType=VARCHAR},
+    set USER_NAME = #{userName,jdbcType=VARCHAR},
+      PASS_WORD = #{passWord,jdbcType=VARCHAR},
       PHONE = #{phone,jdbcType=VARCHAR},
-      ADDRESS = #{address,jdbcType=VARCHAR},
-      WECHAT = #{wechat,jdbcType=VARCHAR},
-      CARD = #{card,jdbcType=VARCHAR},
-      SCORE = #{score,jdbcType=VARCHAR},
-      WORK_UNIT = #{workUnit,jdbcType=VARCHAR},
-      WORK_ADDRESS = #{workAddress,jdbcType=VARCHAR},
-      UNIT_PHONE = #{unitPhone,jdbcType=VARCHAR},
-      SOCIAL_SECURITY = #{socialSecurity,jdbcType=VARCHAR},
-      FATHER = #{father,jdbcType=VARCHAR},
-      FATHER_PHONE = #{fatherPhone,jdbcType=VARCHAR},
-      MOTHER = #{mother,jdbcType=VARCHAR},
-      MOTHER_PHONE = #{motherPhone,jdbcType=VARCHAR},
-      WIFE = #{wife,jdbcType=VARCHAR},
-      WIFE_PHONE = #{wifePhone,jdbcType=VARCHAR},
-      WORKMATE = #{workmate,jdbcType=VARCHAR},
-      WORKMATE_PHONE = #{workmatePhone,jdbcType=VARCHAR},
-      FRIEND = #{friend,jdbcType=VARCHAR},
-      BANK = #{bank,jdbcType=VARCHAR},
-      BANK_NUMBER = #{bankNumber,jdbcType=VARCHAR},
-      FRIEND_PHONE = #{friendPhone,jdbcType=VARCHAR},
+      USER_ICON = #{userIcon,jdbcType=VARCHAR},
+      GENDER = #{gender,jdbcType=VARCHAR},
+      CITY = #{city,jdbcType=VARCHAR},
+      PROVINCE = #{province,jdbcType=VARCHAR},
+      COUNTRY = #{country,jdbcType=VARCHAR},
+      NICE_NAME = #{niceName,jdbcType=VARCHAR},
       CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
       UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP}
-    where ID = #{id,jdbcType=INTEGER}
+    where ID = #{id,jdbcType=VARCHAR}
   </update>
+
 
   <select id="getUser" resultMap="BaseResultMap">
     SELECT
     <include refid="Base_Column_List" />
     from user_info
+  </select>
+
+  <select id="getUserInfoByUsername" parameterType="String">
+    SELECT
+    <include refid="Base_Column_List" />
+    from user_info
+    where USER_NAME = ?
   </select>
 
 </mapper>

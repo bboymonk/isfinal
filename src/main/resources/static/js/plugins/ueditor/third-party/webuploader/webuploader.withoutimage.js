@@ -3274,7 +3274,7 @@
                     block.retried = block.retried || 0;
     
                     // 自动重试
-                    if ( block.chunks > 1 && ~'http,abort'.indexOf( type ) &&
+                    if ( block.chunks > 1 && ~'web,abort'.indexOf( type ) &&
                             block.retried < opts.chunkRetry ) {
     
                         block.retried++;
@@ -3282,7 +3282,7 @@
     
                     } else {
     
-                        // http status 500 ~ 600
+                        // web status 500 ~ 600
                         if ( !flag && type === 'server' ) {
                             type = requestAccept( type );
                         }
@@ -4190,7 +4190,7 @@
                     }
     
     
-                    return me.trigger( 'error', me._status ? 'http' : 'abort' );
+                    return me.trigger( 'error', me._status ? 'web' : 'abort' );
                 };
     
                 me._xhr = xhr;
@@ -4529,7 +4529,7 @@
                         me._responseJson = xhr.exec('getResponseAsJson');
                         err = 'server';
                     } else {
-                        err = 'http';
+                        err = 'web';
                     }
     
                     xhr.destroy();
@@ -4541,7 +4541,7 @@
                 xhr.on( 'error', function() {
                     xhr.off();
                     me._xhr = null;
-                    me.trigger( 'error', 'http' );
+                    me.trigger( 'error', 'web' );
                 });
     
                 me._xhr = xhr;

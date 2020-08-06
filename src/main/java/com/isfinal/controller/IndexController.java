@@ -4,7 +4,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.isfinal.base.BaseController;
 import com.isfinal.module.model.UserInfo;
-import com.isfinal.module.service.UserService;
+import com.isfinal.module.service.UserInfoService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.Date;
-import java.util.List;
 
 /**
  * Created by wjb on 2018/1/26.
@@ -24,7 +23,7 @@ public class IndexController extends BaseController {
     private static final Logger logger = Logger.getLogger(IndexController.class);
 
     @Autowired
-    private UserService userService;
+    private UserInfoService userService;
 
     @GetMapping("/")
     public String index() {

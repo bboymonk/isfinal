@@ -201,7 +201,7 @@
                             case 'interrupt':
                                 text = lang.errorInterrupt;
                                 break;
-                            case 'http':
+                            case 'web':
                                 text = lang.errorHttp;
                                 break;
                             case 'not_allow_type':

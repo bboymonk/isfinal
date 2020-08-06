@@ -271,7 +271,7 @@
         var conUrl = convert_url(url);
 
         $G("preview").innerHTML = '<div class="previewMsg"><span>'+lang.urlError+'</span></div>'+
-        '<embed class="previewVideo" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer"' +
+        '<embed class="previewVideo" type="application/x-shockwave-flash" pluginspage="web://www.macromedia.com/go/getflashplayer"' +
             ' src="' + conUrl + '"' +
             ' width="' + 420  + '"' +
             ' height="' + 280  + '"' +
@@ -430,7 +430,7 @@
                             case 'interrupt':
                                 text = lang.errorInterrupt;
                                 break;
-                            case 'http':
+                            case 'web':
                                 text = lang.errorHttp;
                                 break;
                             case 'not_allow_type':

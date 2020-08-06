@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
 <generatorConfiguration>
     <!--mysql的jar包路径-->
-    <classPathEntry location="C:\Users\wjb\.m2\repository\mysql\mysql-connector-java\5.1.41\mysql-connector-java-5.1.41.jar"/>
+    <classPathEntry location="D:\MavenRepository\mysql\mysql-connector-java\8.0.21\mysql-connector-java-8.0.21.jar"/>
 
     <context id="default" targetRuntime="MyBatis3">
 
@@ -17,8 +17,8 @@
         </commentGenerator>
 
         <!--数据库连接参数-->
-        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://127.0.0.1:3306/isfinal"
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://127.0.0.1:3306/isfinal?useSSL=false&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;serverTimezone=UTC"
                         userId="root"
                         password="root"/>
 
@@ -27,7 +27,7 @@
         </javaTypeResolver>
 
         <!--生成pojo实体类,targetPackage指定包名，targetProject指定路径-->
-        <javaModelGenerator targetPackage="com.isfinal.moudle.user.model" targetProject="src/main/java">
+        <javaModelGenerator targetPackage="com.isfinal.moudle.model" targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
@@ -38,18 +38,16 @@
         </sqlMapGenerator>
 
         <!--生成mapper-->
-        <javaClientGenerator targetPackage="com.isfinal.moudle.user.mapper" targetProject="src/main/java" type="XMLMAPPER">
+        <javaClientGenerator targetPackage="com.isfinal.moudle.mapper" targetProject="src/main/java" type="XMLMAPPER">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
         <!--对哪张表做操作   domainObjectName的意思是把数据的表名指定成Customer，不然生成的对象名前面会有前缀-->
-        <table tableName="content" domainObjectName="Content" enableCountByExample="false" enableDeleteByExample="false"
+        <table tableName="role" domainObjectName="Role" enableCountByExample="false" enableDeleteByExample="false"
                enableSelectByExample="false" enableUpdateByExample="false"/>
-        <table tableName="comment" domainObjectName="Comment" enableCountByExample="false" enableDeleteByExample="false"
+        <table tableName="user_info" domainObjectName="UserInfo" enableCountByExample="false" enableDeleteByExample="false"
                enableSelectByExample="false" enableUpdateByExample="false"/>
-        <table tableName="user" domainObjectName="User" enableCountByExample="false" enableDeleteByExample="false"
-               enableSelectByExample="false" enableUpdateByExample="false"/>
-        <table tableName="picture" domainObjectName="Picture" enableCountByExample="false" enableDeleteByExample="false"
+        <table tableName="user_role" domainObjectName="UserRole" enableCountByExample="false" enableDeleteByExample="false"
                enableSelectByExample="false" enableUpdateByExample="false"/>
 
     </context>

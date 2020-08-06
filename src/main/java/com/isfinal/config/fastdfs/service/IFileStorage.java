@@ -1,4 +1,4 @@
-package com.isfinal.fastdfs.service;
+package com.isfinal.config.fastdfs.service;
 
 import java.io.File;
 import java.io.IOException;

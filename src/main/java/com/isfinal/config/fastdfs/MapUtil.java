@@ -1,4 +1,4 @@
-package com.isfinal.fastdfs;
+package com.isfinal.config.fastdfs;
 import org.csource.common.NameValuePair;
 
 import java.util.HashMap;

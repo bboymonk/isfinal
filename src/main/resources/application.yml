@@ -1,6 +1,12 @@
 server:
     port: 8090
 spring:
+  rabbitmq:
+    listener:
+      simple:
+        concurrency: 1
+        max-concurrency: 5
+        prefetch: 1
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
 #==================================================dataSource========================================#
@@ -63,3 +69,14 @@ redis:
       min-idle: 0
     timeout: 0
     password: 201314
+
+
+log:
+  user:
+    queue:
+      name: boy
+    routing:
+      key:
+        name: monk
+    exchange:
+      name: wjb

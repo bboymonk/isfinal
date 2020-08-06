@@ -4,7 +4,7 @@
 //import com.alibaba.fastjson.JSONObject;
 //import com.isfinal.base.BaseController;
 //import com.isfinal.moudle.user.model.User;
-//import com.isfinal.moudle.user.service.UserService;
+//import com.isfinal.moudle.user.service.UserInfoService;
 //import com.isfinal.util.Global;
 //import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.data.redis.core.StringRedisTemplate;
@@ -28,7 +28,7 @@
 //    @Autowired
 //    private RestTemplate restTemplate;
 //    @Autowired
-//    private UserService userService;
+//    private UserInfoService userService;
 //    @Autowired
 //    private StringRedisTemplate template;
 //

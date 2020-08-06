@@ -1,5 +1,5 @@
 /*
-package com.isfinal.fastdfs.pool;
+package com.isfinal.config.fastdfs.pool;
 import java.io.IOException;
 
 import org.apache.commons.pool.BasePoolableObjectFactory;

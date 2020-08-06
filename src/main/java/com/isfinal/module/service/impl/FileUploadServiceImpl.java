@@ -1,7 +1,8 @@
-package com.isfinal.module.service;
+package com.isfinal.module.service.impl;
 
 import com.isfinal.base.BaseMapper;
 import com.isfinal.base.BaseServiceImpl;
+import com.isfinal.module.service.FileUploadService;
 import com.isfinal.util.ExecuteUpload;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

@@ -2,22 +2,18 @@ package com.isfinal.controller.rabbitmq;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.isfinal.base.BaseController;
-import com.isfinal.module.model.UserLog;
+import com.isfinal.module.model.UserInfo;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.core.MessageBuilder;
 import org.springframework.amqp.core.MessageDeliveryMode;
-import org.springframework.amqp.core.MessageProperties;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
-import org.springframework.amqp.support.converter.AbstractJavaTypeMapper;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -44,9 +40,9 @@ public class UserLogSendController extends BaseController{
     public String sendMessage(@RequestParam(value = "name",required = false) String name){
         try {
             if(StringUtils.isNotBlank(name)){
-                UserLog userLog = new UserLog();
-                userLog.setName("wjb");
-                userLog.setPhone(159058136);
+                UserInfo userLog = new UserInfo();
+                userLog.setUserName("wjb");
+                userLog.setPhone("159058136");
                 userLog.setCreateTime(new Date());
                 rabbitTemplate.setMessageConverter(new Jackson2JsonMessageConverter());
                 rabbitTemplate.setExchange(env.getProperty("log.user.exchange.name"));

@@ -1,5 +1,5 @@
 /*
-package com.isfinal.fastdfs;
+package com.isfinal.config.fastdfs;
 import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
