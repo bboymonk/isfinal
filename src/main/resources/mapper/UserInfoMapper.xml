@@ -182,11 +182,11 @@
     from user_info
   </select>
 
-  <select id="getUserInfoByUsername" parameterType="String">
+  <select id="getUserInfoByUsername" parameterType="String" resultMap="BaseResultMap">
     SELECT
     <include refid="Base_Column_List" />
     from user_info
-    where USER_NAME = ?
+    where USER_NAME = #{username,jdbcType=VARCHAR}
   </select>
 
 </mapper>

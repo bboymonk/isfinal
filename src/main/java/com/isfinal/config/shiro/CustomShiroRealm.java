@@ -15,6 +15,7 @@ import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.subject.SimplePrincipalCollection;
+import org.apache.shiro.util.ByteSource;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.HashSet;
@@ -78,7 +79,7 @@ public class CustomShiroRealm extends AuthorizingRealm {
         if (!JwtUtil.verify(token, username, userInfo.getPassWord())) {
             throw new AuthenticationException("Username or password error");
         }
-        SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(token, token, getName());
+        SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(userInfo, userInfo.getPassWord(),ByteSource.Util.bytes(username), getName());
         return info;
     }
 

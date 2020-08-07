@@ -1,10 +1,12 @@
 package com.isfinal.controller;
 
+import com.github.pagehelper.PageInfo;
 import com.isfinal.base.BaseController;
 import com.isfinal.config.jwt.JwtUtil;
 import com.isfinal.config.shiro.ShiroKit;
 import com.isfinal.module.model.UserInfo;
 import com.isfinal.module.service.UserInfoService;
+import com.isfinal.util.ResultDto;
 import com.isfinal.util.ResultUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.SecurityUtils;
@@ -76,13 +78,28 @@ public class UserController extends BaseController {
             }
             String token = JwtUtil.sign(user.getUserName(), user.getPassWord());
             response.setHeader("token",token);
-            return SUCCESS_FAIL_N(true,"login success",null);
+            return SUCCESS_FAIL_N(true,token,null);
         } catch (Exception e) {
             logger.error("login error",e);
             return SUCCESS_FAIL_N(false,null,"login error");
         }
     }
 
+
+    @GetMapping("/getUser")
+    private void getUser(HttpServletRequest request, HttpServletResponse response,UserInfo userInfo){
+        try {
+            if (StringUtils.isBlank(userInfo.getUserName()) || StringUtils.isBlank(userInfo.getPassWord())){
+                ResultUtils.sendObject(response, ResultDto.fail("-1","userName or passWord can not be null"));
+                return;
+            }
+            PageInfo<UserInfo> users = userInfoService.getUser();
+            ResultUtils.sendObject(response, ResultDto.success(users));
+        } catch (Exception e) {
+            logger.error("getUser error",e);
+            ResultUtils.sendObject(response, ResultDto.fail("-1","getUser error"));
+        }
+    }
 
 
 }
