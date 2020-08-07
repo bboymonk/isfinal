@@ -8,7 +8,7 @@ import org.apache.shiro.subject.Subject;
 public class ShiroKit {
 
     public static String md5(String password,String salt) {
-        String p = new Md5Hash(password, salt,2).toHex();
+        String p = new Md5Hash(password, salt,1024).toHex();
         return p;
     }
 

@@ -1,4 +1,4 @@
-package com.isfinal.controller;
+package com.isfinal.controller.money;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;

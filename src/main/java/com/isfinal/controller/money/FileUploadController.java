@@ -1,4 +1,4 @@
-package com.isfinal.controller;
+package com.isfinal.controller.money;
 
 import com.isfinal.base.BaseController;
 import com.isfinal.module.service.FileUploadService;

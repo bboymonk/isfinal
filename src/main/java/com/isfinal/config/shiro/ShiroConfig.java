@@ -2,6 +2,7 @@ package com.isfinal.config.shiro;
 
 import com.isfinal.config.jwt.JwtFilter;
 import org.apache.log4j.Logger;
+import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.mgt.DefaultSessionStorageEvaluator;
 import org.apache.shiro.mgt.DefaultSubjectDAO;
 import org.apache.shiro.mgt.SecurityManager;
@@ -40,7 +41,7 @@ public class ShiroConfig {
         factoryBean.setUnauthorizedUrl("/unauthorized/无权限");
         Map<String, String> filterRuleMap = new HashMap<>();
         //访问/login和/unauthorized 不需要经过过滤器
-        filterRuleMap.put("/login", "anon");
+        filterRuleMap.put("/isfinal/login", "anon");
         filterRuleMap.put("/unauthorized/**", "anon");
         // 所有请求通过我们自己的JWT Filter
         filterRuleMap.put("/**", "jwt");
@@ -71,7 +72,16 @@ public class ShiroConfig {
     @Bean
     public CustomShiroRealm customShiroRealm() {
         CustomShiroRealm customShiroRealm = new CustomShiroRealm();
+        customShiroRealm.setCredentialsMatcher(hashMatcher());
         return customShiroRealm;
+    }
+
+    @Bean
+    public HashedCredentialsMatcher hashMatcher(){
+        HashedCredentialsMatcher hashedCredentialsMatcher =new HashedCredentialsMatcher();
+        hashedCredentialsMatcher.setHashAlgorithmName("MD5");
+        hashedCredentialsMatcher.setHashIterations(1024);
+        return  hashedCredentialsMatcher;
     }
 
     /**
