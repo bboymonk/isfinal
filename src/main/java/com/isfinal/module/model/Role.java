@@ -3,6 +3,7 @@ package com.isfinal.module.model;
 import java.util.Date;
 
 public class Role {
+
     private String id;
 
     private String role;

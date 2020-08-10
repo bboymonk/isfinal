@@ -1,6 +1,7 @@
 package com.isfinal.module.model;
 
 public class UserRole {
+
     private String id;
 
     private String userId;

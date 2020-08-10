@@ -19,4 +19,5 @@ public interface RoleMapper extends BaseMapper<Role,String> {
     int updateByPrimaryKey(Role record);
 
     List<Role> getRoles(String id);
+
 }
