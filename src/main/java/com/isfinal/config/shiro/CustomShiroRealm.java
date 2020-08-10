@@ -79,7 +79,7 @@ public class CustomShiroRealm extends AuthorizingRealm {
         if (!JwtUtil.verify(token, username, userInfo.getPassWord())) {
             throw new AuthenticationException("Username or password error");
         }
-        SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(userInfo, userInfo.getPassWord(),ByteSource.Util.bytes(username), getName());
+        SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(token, token, getName());
         return info;
     }
 

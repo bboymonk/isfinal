@@ -72,16 +72,7 @@ public class ShiroConfig {
     @Bean
     public CustomShiroRealm customShiroRealm() {
         CustomShiroRealm customShiroRealm = new CustomShiroRealm();
-        customShiroRealm.setCredentialsMatcher(hashMatcher());
         return customShiroRealm;
-    }
-
-    @Bean
-    public HashedCredentialsMatcher hashMatcher(){
-        HashedCredentialsMatcher hashedCredentialsMatcher =new HashedCredentialsMatcher();
-        hashedCredentialsMatcher.setHashAlgorithmName("MD5");
-        hashedCredentialsMatcher.setHashIterations(1024);
-        return  hashedCredentialsMatcher;
     }
 
     /**
