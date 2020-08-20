@@ -69,7 +69,15 @@ redis:
       min-idle: 0
     timeout: 0
     password: 201314
-
+#==================================================minIO========================================#
+minio:
+  endpoint: 172.28.43.29
+  port: 9000
+  accessKey: minio
+  secretKey: miniopassword
+  secure: false
+  bucketName: "hope-bucket"
+  configDir: "/home/data/"
 
 log:
   user:
