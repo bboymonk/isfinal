@@ -3,8 +3,8 @@ package com.isfinal.controller.money;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.isfinal.base.BaseController;
-import com.isfinal.module.model.UserInfo;
-import com.isfinal.module.service.UserInfoService;
+import com.isfinal.module.model.User;
+import com.isfinal.module.service.UserService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,7 +23,7 @@ public class IndexController extends BaseController {
     private static final Logger logger = Logger.getLogger(IndexController.class);
 
     @Autowired
-    private UserInfoService userService;
+    private UserService userService;
 
     @GetMapping("/")
     public String index() {
@@ -40,8 +40,8 @@ public class IndexController extends BaseController {
         return "view/notice";
     }
 
-    @GetMapping("/bboy/userInfo")
-    public String userInfo() {
+    @GetMapping("/bboy/User")
+    public String User() {
         return "index";
     }
 
@@ -51,7 +51,7 @@ public class IndexController extends BaseController {
     public String getUser(Integer page,Integer limit) {
         try {
             PageHelper.startPage(page == null ? 1 : page,limit == null ? 10 : limit);
-            PageInfo<UserInfo> pageInfo = userService.getUser();
+            PageInfo<User> pageInfo = userService.getUser();
             return SUCCESS_FAIL_N(true,pageInfo, "success");
         } catch (Exception e) {
             logger.error("query error", e);
@@ -62,10 +62,10 @@ public class IndexController extends BaseController {
 
     @ResponseBody
     @PostMapping("/addUser")
-    public String addUser(UserInfo userInfo) {
+    public String addUser(User User) {
         try {
-            userInfo.setCreateTime(new Date());
-            int i = userService.insertSelective(userInfo);
+            User.setCreateTime(new Date());
+            int i = userService.insertSelective(User);
             return SUCCESS_FAIL_N(true,i, "success");
         } catch (Exception e) {
             logger.error("add user error", e);

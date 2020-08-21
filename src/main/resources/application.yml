@@ -71,7 +71,7 @@ redis:
     password: 201314
 #==================================================minIO========================================#
 minio:
-  endpoint: 172.28.43.29
+  endpoint: 172.18.106.251
   port: 9000
   accessKey: minio
   secretKey: miniopassword

@@ -3,7 +3,7 @@ package com.isfinal.module.model;
 import java.io.Serializable;
 import java.util.Date;
 
-public class UserInfo implements Serializable {
+public class User implements Serializable {
     private String id;
 
     private String userName;

@@ -3,9 +3,9 @@ package com.isfinal.config.shiro;
 import com.isfinal.config.jwt.JwtToken;
 import com.isfinal.config.jwt.JwtUtil;
 import com.isfinal.module.model.Role;
-import com.isfinal.module.model.UserInfo;
+import com.isfinal.module.model.User;
 import com.isfinal.module.service.RoleService;
-import com.isfinal.module.service.UserInfoService;
+import com.isfinal.module.service.UserService;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
@@ -28,7 +28,7 @@ public class CustomShiroRealm extends AuthorizingRealm {
     private RoleService roleService;
 
     @Autowired
-    private UserInfoService userService;
+    private UserService userService;
 
     @Override
     public boolean supports(AuthenticationToken token) {
@@ -44,8 +44,8 @@ public class CustomShiroRealm extends AuthorizingRealm {
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
         String username = JwtUtil.getUsername(principalCollection.toString());
-        UserInfo userInfo = userService.getUserInfoByUsername(username);
-        List<Role> roleList = roleService.getRoles(userInfo.getId());
+        User User = userService.getUserByUsername(username);
+        List<Role> roleList = roleService.getRoles(User.getId());
         Set<String> permissions = new HashSet<String>();
         Set<String> roles = new HashSet<String>();
         for (Role role : roleList) {
@@ -71,12 +71,12 @@ public class CustomShiroRealm extends AuthorizingRealm {
         if (username == null) {
             throw new AuthenticationException("token invalid");
         }
-        UserInfo userInfo = userService.getUserInfoByUsername(username);
-        if (userInfo == null) {
+        User User = userService.getUserByUsername(username);
+        if (User == null) {
             throw new AuthenticationException("User didn't existed!");
         }
 
-        if (!JwtUtil.verify(token, username, userInfo.getPassWord())) {
+        if (!JwtUtil.verify(token, username, User.getPassWord())) {
             throw new AuthenticationException("Username or password error");
         }
         SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(token, token, getName());
@@ -90,7 +90,7 @@ public class CustomShiroRealm extends AuthorizingRealm {
 
     @Override
     protected void clearCachedAuthenticationInfo(PrincipalCollection principals) {
-        UserInfo user = (UserInfo) principals.getPrimaryPrincipal();
+        User user = (User) principals.getPrimaryPrincipal();
         SimplePrincipalCollection spc = new SimplePrincipalCollection(user.getUserName(), getName());
         super.clearCachedAuthenticationInfo(spc);
     }
