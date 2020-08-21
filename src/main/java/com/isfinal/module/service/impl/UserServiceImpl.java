@@ -17,22 +17,22 @@ import java.util.List;
 @Service
 public class UserServiceImpl extends BaseServiceImpl<User,String> implements UserService {
     @Autowired
-    private UserMapper UserMapper;
+    private UserMapper userMapper;
 
     @Override
     public BaseMapper getMapper() {
-        return UserMapper;
+        return userMapper;
     }
 
     @Override
     public PageInfo<User> getUser() {
-        List<User> user = UserMapper.getUser();
+        List<User> user = userMapper.getUser();
         return new PageInfo<User>(user);
     }
 
     @Override
     public User getUserByUsername(String username) {
-        return UserMapper.getUserByUsername(username);
+        return userMapper.getUserByUsername(username);
     }
 
 

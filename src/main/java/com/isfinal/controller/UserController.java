@@ -26,7 +26,7 @@ public class UserController extends BaseController {
     private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
     @Autowired
-    private UserService UserService;
+    private UserService userService;
 
 
     /**
@@ -36,12 +36,12 @@ public class UserController extends BaseController {
      * @return
      */
     @GetMapping("/register")
-    private String register(HttpServletRequest request, HttpServletResponse response, User User){
+    private String register(HttpServletRequest request, HttpServletResponse response, User user){
         try {
-            if (StringUtils.isBlank(User.getUserName()) || StringUtils.isBlank(User.getPassWord())){
+            if (StringUtils.isBlank(user.getUserName()) || StringUtils.isBlank(user.getPassWord())){
                 return SUCCESS_FAIL_N(false,null,"userName or passWord can not be null");
             }
-            String md5Pwd = ShiroKit.md5(User.getPassWord(), User.getUserName());
+            String md5Pwd = ShiroKit.md5(user.getPassWord(), user.getUserName());
 
 
             ResultUtils.sendObject(response,null);
@@ -60,20 +60,20 @@ public class UserController extends BaseController {
      * @return
      */
     @GetMapping("/login")
-    private String login(HttpServletRequest request, HttpServletResponse response,User User){
+    private String login(HttpServletRequest request, HttpServletResponse response,User user){
         try {
-            if (StringUtils.isBlank(User.getUserName()) || StringUtils.isBlank(User.getPassWord())){
+            if (StringUtils.isBlank(user.getUserName()) || StringUtils.isBlank(user.getPassWord())){
                 return SUCCESS_FAIL_N(false,null,"userName or passWord can not be null");
             }
-            User user = UserService.getUserByUsername(User.getUserName());
-            if (null == user){
-                return SUCCESS_FAIL_N(false,null,"用户名或密码不正确");
+            User u = userService.getUserByUsername(user.getUserName());
+            if (null == u){
+                return SUCCESS_FAIL_N(false,null,"用户名不正确");
             }
-            String md5Pwd = ShiroKit.md5(User.getPassWord(), User.getUserName());
-            if (!user.getPassWord().equals(md5Pwd)){
+            String md5Pwd = ShiroKit.md5(u.getPassWord(), u.getUserName());
+            if (!u.getPassWord().equals(md5Pwd)){
                 return SUCCESS_FAIL_N(false,null,"用户密码不正确");
             }
-            String token = JwtUtil.sign(user.getUserName(), user.getPassWord());
+            String token = JwtUtil.sign(u.getUserName(), u.getPassWord());
             response.setHeader("token",token);
             return SUCCESS_FAIL_N(true,token,null);
         } catch (Exception e) {
@@ -84,13 +84,13 @@ public class UserController extends BaseController {
 
 
     @GetMapping("/getUser")
-    private void getUser(HttpServletRequest request, HttpServletResponse response,User User){
+    private void getUser(HttpServletRequest request, HttpServletResponse response,User user){
         try {
-            if (StringUtils.isBlank(User.getUserName()) || StringUtils.isBlank(User.getPassWord())){
+            if (StringUtils.isBlank(user.getUserName()) || StringUtils.isBlank(user.getPassWord())){
                 ResultUtils.sendObject(response, ResultDto.fail("-1","userName or passWord can not be null"));
                 return;
             }
-            PageInfo<User> users = UserService.getUser();
+            PageInfo<User> users = userService.getUser();
             ResultUtils.sendObject(response, ResultDto.success(users));
         } catch (Exception e) {
             logger.error("getUser error",e);

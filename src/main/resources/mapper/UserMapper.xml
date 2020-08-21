@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.isfinal.module.mapper.UserInfoMapper">
-  <resultMap id="BaseResultMap" type="com.isfinal.module.model.UserInfo">
+<mapper namespace="com.isfinal.module.mapper.UserMapper">
+  <resultMap id="BaseResultMap" type="com.isfinal.module.model.User">
     <id column="ID" jdbcType="VARCHAR" property="id" />
     <result column="USER_NAME" jdbcType="VARCHAR" property="userName" />
     <result column="PASS_WORD" jdbcType="VARCHAR" property="passWord" />
@@ -29,7 +29,7 @@
     delete from user_info
     where ID = #{id,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.isfinal.module.model.UserInfo">
+  <insert id="insert" parameterType="com.isfinal.module.model.User">
     insert into user_info (ID, USER_NAME, PASS_WORD, 
       PHONE, USER_ICON, GENDER, 
       CITY, PROVINCE, COUNTRY, 
@@ -41,7 +41,7 @@
       #{niceName,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.isfinal.module.model.UserInfo">
+  <insert id="insertSelective" parameterType="com.isfinal.module.model.User">
     insert into user_info
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -120,7 +120,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.isfinal.module.model.UserInfo">
+  <update id="updateByPrimaryKeySelective" parameterType="com.isfinal.module.model.User">
     update user_info
     <set>
       <if test="userName != null">
@@ -159,7 +159,7 @@
     </set>
     where ID = #{id,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.isfinal.module.model.UserInfo">
+  <update id="updateByPrimaryKey" parameterType="com.isfinal.module.model.User">
     update user_info
     set USER_NAME = #{userName,jdbcType=VARCHAR},
       PASS_WORD = #{passWord,jdbcType=VARCHAR},
